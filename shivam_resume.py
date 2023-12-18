@@ -2,7 +2,7 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 
 
-import navbar, Intro, Project
+import navbar, Intro, component
 
 
 selected =navbar.streamlit_menu()
@@ -12,21 +12,29 @@ with open("style.css") as f:
 
 if selected == "Intro":
     Intro.Intro()
+    
+    component.Summary("## Summary" )
 if selected == "Project":
-    selected=Project.horizontal_menu()
-    if selected == "Home":
-        st.title(f"You have selected {selected}")
+    selected=navbar.horizontal_menu()
+    if selected == "Python":
+        # Intro.Summary("## Python")
+        component.Project("## Python",12,13,14)
+    if selected == "Php":
+        # Intro.Summary("## Java")
+        component.Project("## Php",15,16,17)
+    if selected == "Java":
+        # Intro.Summary("## Php")
+        component.Project("## Java",18,19,20)
+    if selected == "JavaScript":
+        # Intro.Summary("## JavaScript")
+        component.Project("## JavaScript",21,22,23)
 
-    if selected == "Projects":
-        st.title(f"You have selected {selected}")
-
-    if selected == "Contact":
-        st.title(f"You have selected {selected}")
 if selected == "Education":
-    st.title(f"You have selected {selected}")
+    component.Education("## Education", 0, 1, 2)
 if selected == "Experience":
-    st.title(f"You have selected {selected}")
+    component.Education("## Experience", 3,4,5)
 if selected == "Achievement":
-    st.title(f"You have selected {selected}")
+    component.Education("## Achievement",6,7,8)
+
 if selected == "Other":
-    st.title(f"You have selected {selected}")
+    component.Education("## Other",9,10,11)

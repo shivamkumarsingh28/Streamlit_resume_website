@@ -1,12 +1,17 @@
 import streamlit as st
 from streamlit_player import st_player, _SUPPORTED_EVENTS
 import database_config
+from PIL import Image
 
 database_url = "https://docs.google.com/spreadsheets/d/1Xf9xu9mIPywKDiMphXsjnf7DG0VQ3Tmk9-tvCKq5MTM/edit?usp=sharing"
 Database = database_config.SaeeAM_query(f'SELECT * FROM "{database_url}"')
 
+
+
+
+
 def datafetch(a, b, c):
-  col1, col2 = st.columns([8,1])
+  col1, col2 = st.columns([6,3])
   with col1:
     st.markdown(a)
     st.markdown(c)
@@ -39,8 +44,16 @@ def Education(title, row_no1=1, row_no2=2, row_no3=3):
             datafetch(edu[row_no1],edu[row_no3], edu[row_no2])               
     
 
-def Summary(title):
+def Summary(title,row_no, col_no):
     st.markdown(title, unsafe_allow_html=True)
-    for summary in Database:
-        if summary[24] !=None:
-            st.info(summary[24])
+    if Database[row_no][col_no] !=None:
+      st.info(Database[row_no][col_no])
+
+
+def Intro():
+    image = Image.open('dp1.jpg')
+    st.image(image, width=150)
+
+    st.write('''
+  # Shivam kumar singh resume.
+  ''')
